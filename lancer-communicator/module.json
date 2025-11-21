@@ -1,9 +1,9 @@
 {
-    "id": "lancer-communicator",
-    "name": "lancer-communicator",
-    "title": "Lancer Communicator",
+    "id": "alt-lancer-communicator",
+    "name": "alt-lancer-communicator",
+    "title": "Alt Font Lancer Communicator",
     "description": "NPC Communicator for Lancer RPG with Alternate Font Files installed",
-    "version": "0.6.5.1",
+    "version": "0.1",
 	"languages": [
         {
             "lang": "en",
