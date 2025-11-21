@@ -2,7 +2,7 @@
  * Основной класс Lancer Communicator
  * Управляет показом сообщений и диалоговым интерфейсом
  */
-export class LancerCommunicator {
+export class AltLancerCommunicator {
     // Кэшированные настройки
     static settings = {
         typingSpeed: 130,
@@ -16,9 +16,9 @@ export class LancerCommunicator {
     static initSocketListeners() {
         if (!game.socket) return;
 		
-        this.settings.voiceVolume = game.settings.get('lancer-communicator', 'voiceVolume') || 0.3;
+        this.settings.voiceVolume = game.settings.get('alt-lancer-communicator', 'voiceVolume') || 0.3;
 
-        game.socket.on('module.lancer-communicator', (payload) => {
+        game.socket.on('module.alt-lancer-communicator', (payload) => {
             if (payload?.type === 'showMessage' && payload.data?.characterName) {
                 this.showCommunicatorMessage(payload.data).catch(console.error);
             }
@@ -30,23 +30,23 @@ export class LancerCommunicator {
      */
     static async openCommunicatorSettings() {
         const selectedToken = canvas.tokens.controlled[0];
-        let lastPortrait = game.settings.get('lancer-communicator', 'lastPortrait');
-        let lastCharacterName = game.settings.get('lancer-communicator', 'lastCharacterName');
+        let lastPortrait = game.settings.get('alt-lancer-communicator', 'lastPortrait');
+        let lastCharacterName = game.settings.get('alt-lancer-communicator', 'lastCharacterName');
         if (selectedToken) {
             lastCharacterName = selectedToken.name; 
         }
-        const lastSound = game.settings.get('lancer-communicator', 'lastSound');
-		const lastVoiceover = game.settings.get('lancer-communicator', 'lastVoiceover');
-        const lastStyle = game.settings.get('lancer-communicator', 'lastMessageStyle');
-        const fontSize = game.settings.get('lancer-communicator', 'messageFontSize');
-        this.settings.typingSpeed = game.settings.get('lancer-communicator', 'typingSpeed') || 130;
-        this.settings.voiceVolume = game.settings.get('lancer-communicator', 'voiceVolume') || 0.3;
-        this.settings.fontFamily = game.settings.get('lancer-communicator', 'fontFamily') || 'MOSCOW2024';
+        const lastSound = game.settings.get('alt-lancer-communicator', 'lastSound');
+		const lastVoiceover = game.settings.get('alt-lancer-communicator', 'lastVoiceover');
+        const lastStyle = game.settings.get('alt-lancer-communicator', 'lastMessageStyle');
+        const fontSize = game.settings.get('alt-lancer-communicator', 'messageFontSize');
+        this.settings.typingSpeed = game.settings.get('alt-lancer-communicator', 'typingSpeed') || 130;
+        this.settings.voiceVolume = game.settings.get('alt-lancer-communicator', 'voiceVolume') || 0.3;
+        this.settings.fontFamily = game.settings.get('alt-lancer-communicator', 'fontFamily') || 'MOSCOW2024';
 
         new Dialog({
-            title: game.i18n.localize("LANCER.Settings.CommunicatorSettings"),
+            title: game.i18n.localize("LANCER.Settings.AltCommunicatorSettings"),
             content: `
-                <form class="lancer-communicator-dialog">
+                <form class="alt-lancer-communicator-dialog">
                     <div class="lcm-form-group">
                         <label>${game.i18n.localize("LANCER.Settings.CharacterName")}</label>
                         <input type="text" id="character-name" value="${lastCharacterName || ''}" placeholder="${game.i18n.localize("LANCER.Settings.CharacterName")}">
@@ -155,11 +155,11 @@ export class LancerCommunicator {
                         }
 
                         // Сохраняем значения в настройках
-                        game.settings.set('lancer-communicator', 'lastCharacterName', characterName);
-                        game.settings.set('lancer-communicator', 'lastPortrait', portraitPath);
-                        game.settings.set('lancer-communicator', 'lastSound', soundPath);
-                        game.settings.set('lancer-communicator', 'lastMessageStyle', style);
-                        game.settings.set('lancer-communicator', 'fontFamily', fontFamily);
+                        game.settings.set('alt-lancer-communicator', 'lastCharacterName', characterName);
+                        game.settings.set('alt-lancer-communicator', 'lastPortrait', portraitPath);
+                        game.settings.set('alt-lancer-communicator', 'lastSound', soundPath);
+                        game.settings.set('alt-lancer-communicator', 'lastMessageStyle', style);
+                        game.settings.set('alt-lancer-communicator', 'fontFamily', fontFamily);
 
                         // Отправляем сообщение
                         this.sendCommunicatorMessage(characterName, portraitPath, message, soundPath, voiceoverPath, style, fontSize, fontFamily);
@@ -398,21 +398,21 @@ export class LancerCommunicator {
                     const fontSize = Number(formElement.querySelector('#font-size-input')?.value || 14);
                     // Сохраняем размер шрифта в настройках
                     if (!isNaN(fontSize) && fontSize >= 10 && fontSize <= 32) {
-                        game.settings.set('lancer-communicator', 'messageFontSize', fontSize)
+                        game.settings.set('alt-lancer-communicator', 'messageFontSize', fontSize)
                             .catch(err => console.error('Error saving font size setting', err));
                     }
 					
                     const voiceVolumeInput = formElement.querySelector('#voice-volume');
                     if (voiceVolumeInput) {
                         const volume = parseFloat(voiceVolumeInput.value);
-                        game.settings.set('lancer-communicator', 'voiceVolume', volume)
+                        game.settings.set('alt-lancer-communicator', 'voiceVolume', volume)
                             .catch(err => console.error('Error saving voice volume', err));
 
                         this.settings.voiceVolume = volume;
                     }
 
                     const voiceoverPath = formElement.querySelector('#voiceover-path').value;
-                    game.settings.set('lancer-communicator', 'lastVoiceover', voiceoverPath);
+                    game.settings.set('alt-lancer-communicator', 'lastVoiceover', voiceoverPath);
                 }
             }
         }).render(true);
@@ -445,7 +445,7 @@ export class LancerCommunicator {
         // Показываем сообщение локально
         this.showCommunicatorMessage(messageData).catch(console.error);
         // Отправляем сообщение всем подключенным клиентам
-        game.socket.emit('module.lancer-communicator', {
+        game.socket.emit('module.alt-lancer-communicator', {
             type: 'showMessage',
             data: messageData
         });
@@ -459,7 +459,7 @@ export class LancerCommunicator {
         const { characterName, portraitPath, message, soundPath, voiceoverPath, style, fontSize, fontFamily } = data;
     
 		// Удаляем существующее сообщение
-		const existingMessage = document.getElementById('lancer-communicator-message');
+		const existingMessage = document.getElementById('alt-lancer-communicator-message');
 		if (existingMessage) {
 			return new Promise(resolve => {
 				// Удаляем предыдущее сообщение без анимации, чтобы избежать конфликтов
@@ -471,7 +471,7 @@ export class LancerCommunicator {
 
         // Создаем элементы DOM для сообщения
         const messageContainer = document.createElement('div');
-        messageContainer.id = 'lancer-communicator-message';
+        messageContainer.id = 'alt-lancer-communicator-message';
         messageContainer.className = `top-screen style-${style || 'green'}`;
         
         // Создаем внутреннюю структуру сообщения
@@ -505,7 +505,7 @@ export class LancerCommunicator {
         let soundInstance = null;
         if (voiceoverPath) {
 			try {
-				const volume = game.settings.get('lancer-communicator', 'voiceVolume') || 0.3;
+				const volume = game.settings.get('alt-lancer-communicator', 'voiceVolume') || 0.3;
 				voiceoverInstance = new Audio(voiceoverPath);
 				voiceoverInstance.volume = volume + 0.2;
 				
@@ -516,7 +516,7 @@ export class LancerCommunicator {
 				});
 				voiceoverInstance.play(); // Проигрываем озвучку целиком
 			} catch (error) {
-				console.error('Lancer Communicator | Voiceover preload error:', error);
+				console.error('Lancer Alt Communicator | Voiceover preload error:', error);
 			}
 		} 
 		// Если озвучка не задана, используем звук для каждого символа
@@ -529,7 +529,7 @@ export class LancerCommunicator {
 					setTimeout(resolve, 2000);
 				});
 			} catch (error) {
-				console.error('Lancer Communicator | Sound preload error:', error);
+				console.error('Lancer Alt Communicator | Sound preload error:', error);
 			}
 		}
 
@@ -577,7 +577,7 @@ export class LancerCommunicator {
                             span.textContent = currentChar;
 											
                             // Добавляем класс тряски только если включено в настройках
-                            const shakeEnabled = game.settings.get('lancer-communicator', 'enableTextShake');
+                            const shakeEnabled = game.settings.get('alt-lancer-communicator', 'enableTextShake');
                             if (shakeEnabled) {
                                 span.classList.add('lcm-shake-text');
                             }
@@ -595,7 +595,7 @@ export class LancerCommunicator {
 					if (voiceoverPath) {
 						// Не воспроизводим звук для каждого символа
 					} else if (soundInstance && !/[\s\.,!?;:-]/.test(currentChar)) {
-						const volume = game.settings.get('lancer-communicator', 'voiceVolume') || 0.3;
+						const volume = game.settings.get('alt-lancer-communicator', 'voiceVolume') || 0.3;
 						const randomPitch = 0.85 + (Math.random() * 0.3);
 
 						// Останавливаем предыдущий звук, если он есть
@@ -680,7 +680,7 @@ export class LancerCommunicator {
                         // Форматируем параметры для макроса
                         const commandText = `
                             // Созданный макрос коммуникатора Lancer
-                            game.modules.get('lancer-communicator').api.sendCommunicatorMessage(
+                            game.modules.get('alt-lancer-communicator').api.sendCommunicatorMessage(
                                 "${characterName}",
                                 "${portraitPath}",
                                 "${message.replace(/"/g, '\\"')}",
@@ -777,7 +777,7 @@ export class LancerCommunicator {
                             });
                             // Если сообщение введено, отправляем его
                             if (messageText && messageText.trim()) {
-                                game.modules.get('lancer-communicator').api.sendCommunicatorMessage(
+                                game.modules.get('alt-lancer-communicator').api.sendCommunicatorMessage(
                                     "${characterName}",
                                     "${portraitPath}",
                                     messageText,

@@ -1,7 +1,7 @@
 // Модуль для настроек
 export function registerSettings() {
     // Настройка для определения, могут ли игроки использовать коммуникатор
-    game.settings.register('lancer-communicator', 'allowPlayersAccess', {
+    game.settings.register('alt-lancer-communicator', 'allowPlayersAccess', {
         name: game.i18n.localize("LANCER.Settings.AllowPlayersAccess"),
         hint: "Разрешает игрокам использовать функции коммуникатора",
         scope: 'world',
@@ -11,7 +11,7 @@ export function registerSettings() {
     });
     
     // Настройка для скорости печати
-    game.settings.register('lancer-communicator', 'typingSpeed', {
+    game.settings.register('alt-lancer-communicator', 'typingSpeed', {
         name: game.i18n.localize("LANCER.Settings.typingSpeed"),
         scope: 'world',
         config: true,
@@ -25,7 +25,7 @@ export function registerSettings() {
     });
     
     // Настройка для громкости звука
-    game.settings.register('lancer-communicator', 'voiceVolume', {
+    game.settings.register('alt-lancer-communicator', 'voiceVolume', {
         name: game.i18n.localize("LANCER.Settings.voiceVolume"),
         scope: 'world',
         config: true,
@@ -39,7 +39,7 @@ export function registerSettings() {
     });
 	
     // Выбранное семейство шрифтов
-    game.settings.register('lancer-communicator', 'fontFamily', {
+    game.settings.register('alt-lancer-communicator', 'fontFamily', {
         name: game.i18n.localize("LANCER.Settings.FontFamily") || "Font Family",
         hint: game.i18n.localize("LANCER.Settings.FontFamilyHint") || "The font used for messages",
         scope: "client",
@@ -49,7 +49,7 @@ export function registerSettings() {
     });
     
     // Настройка для шрифта сообщений
-    game.settings.register('lancer-communicator', 'communicatorFont', {
+    game.settings.register('alt-lancer-communicator', 'communicatorFont', {
         name: game.i18n.localize("LANCER.Settings.FontSelect"),
         scope: 'world',
         config: false,
@@ -73,7 +73,7 @@ export function registerSettings() {
     });
     
     // Настройка для размера шрифта сообщений
-    game.settings.register('lancer-communicator', 'messageFontSize', {
+    game.settings.register('alt-lancer-communicator', 'messageFontSize', {
         name: game.i18n.localize("LANCER.Settings.FontSize"),
         scope: 'world',
         config: true,
@@ -90,7 +90,7 @@ export function registerSettings() {
     });
 
     // Сохранение последнего выбранного портрета
-    game.settings.register('lancer-communicator', 'lastPortrait', {
+    game.settings.register('alt-lancer-communicator', 'lastPortrait', {
         name: game.i18n.localize("LANCER.Settings.currentPortrait"),
         scope: 'client',
         config: false,
@@ -99,7 +99,7 @@ export function registerSettings() {
     });
 
     // Сохранение последнего выбранного звука
-    game.settings.register('lancer-communicator', 'lastSound', {
+    game.settings.register('alt-lancer-communicator', 'lastSound', {
         name: game.i18n.localize("LANCER.Settings.currentSound"),
         scope: 'client',
         config: false,
@@ -108,7 +108,7 @@ export function registerSettings() {
     });
 
     // Сохранение последнего имени персонажа
-    game.settings.register('lancer-communicator', 'lastCharacterName', {
+    game.settings.register('alt-lancer-communicator', 'lastCharacterName', {
         name: game.i18n.localize("LANCER.Settings.lastCharacterName"),
         scope: 'client',
         config: false,
@@ -117,7 +117,7 @@ export function registerSettings() {
     });
 
     // Сохранение последнего выбранного стиля сообщения
-    game.settings.register('lancer-communicator', 'lastMessageStyle', {
+    game.settings.register('alt-lancer-communicator', 'lastMessageStyle', {
         name: game.i18n.localize("LANCER.Settings.lastMessageStyle"),
         scope: 'client',
         config: false,
@@ -126,7 +126,7 @@ export function registerSettings() {
     });
 	
     // Сохранение последнего выбранного файла озвучки
-    game.settings.register('lancer-communicator', 'lastVoiceover', {
+    game.settings.register('alt-lancer-communicator', 'lastVoiceover', {
         name: game.i18n.localize("LANCER.Settings.lastVoiceover"),
         scope: 'client',
         config: false,
@@ -134,7 +134,7 @@ export function registerSettings() {
         default: ''
     });
 	
-    game.settings.register('lancer-communicator', 'enableTextShake', {
+    game.settings.register('alt-lancer-communicator', 'enableTextShake', {
     name: game.i18n.localize("LANCER.Settings.EnableTextShake") || "Enable Text Shake",
     hint: game.i18n.localize("LANCER.Settings.EnableTextShakeHint") || "Toggle shaking animation for uppercase or emphasized text",
     scope: 'world',

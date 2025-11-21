@@ -1,16 +1,16 @@
-import { LancerCommunicator } from './communicator.js';
+import { AltLancerCommunicator } from './alt-communicator.js';
 import { registerSettings } from './settings.js';
 import { registerAPI } from './api.js';
 
 // Инициализация модуля
 Hooks.once('init', () => {
-    console.log('Lancer Communicator | Initializing');
+    console.log('Alt Lancer Communicator | Initializing');
     registerSettings();
     registerAPI();
 
     // === ДОБАВЛЕНИЕ КНОПКИ В ИНСТРУМЕНТЫ ТОКЕНОВ (v12 + v13) ===
     Hooks.on('getSceneControlButtons', (controls) => {
-        const allowPlayersAccess = game.settings.get('lancer-communicator', 'allowPlayersAccess');
+        const allowPlayersAccess = game.settings.get('alt-lancer-communicator', 'allowPlayersAccess');
         if (!game.user.isGM && !allowPlayersAccess) return;
 
         // Определяем, используется ли Foundry v13+
@@ -29,7 +29,7 @@ Hooks.once('init', () => {
 
         const toolConfig = {
             name: "communicator",
-            title: game.i18n.localize("LANCER.Settings.Communicator") || "Lancer Communicator",
+            title: game.i18n.localize("LANCER.Settings.AltCommunicator") || "Alt Lancer Communicator",
             icon: "fas fa-satellite-dish",
             visible: true,
             button: true
@@ -41,7 +41,7 @@ Hooks.once('init', () => {
                 ...toolConfig,
                 onChange: () => {
                     console.log('Lancer Communicator | Button clicked (v13)');
-                    LancerCommunicator.openCommunicatorSettings();
+                    AltLancerCommunicator.openCommunicatorSettings();
                 }
             };
         } else {
@@ -51,7 +51,7 @@ Hooks.once('init', () => {
                     ...toolConfig,
                     onClick: () => {
                         console.log('Lancer Communicator | Button clicked (v12)');
-                        LancerCommunicator.openCommunicatorSettings();
+                        AltLancerCommunicator.openCommunicatorSettings();
                     }
                 });
             }
@@ -63,8 +63,8 @@ Hooks.once('init', () => {
 Hooks.once('ready', () => {
     console.log('Lancer Communicator | Ready');
     console.log('Lancer Communicator | Localization test:', 
-        game.i18n.localize("LANCER.Settings.Communicator"), 
-        game.i18n.has("LANCER.Settings.Communicator"));
+        game.i18n.localize("LANCER.Settings.AltCommunicator"), 
+        game.i18n.has("LANCER.Settings.AltCommunicator"));
 
     try {
         const fontSize = game.settings.get('lancer-communicator', 'messageFontSize') || 14;
@@ -77,5 +77,5 @@ Hooks.once('ready', () => {
         document.documentElement.style.setProperty('--message-font', 'MOSCOW2024');
     }
 
-    LancerCommunicator.initSocketListeners();
+    AltLancerCommunicator.initSocketListeners();
 });
