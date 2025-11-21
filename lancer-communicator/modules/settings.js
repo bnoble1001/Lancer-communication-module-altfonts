@@ -61,7 +61,10 @@ export function registerSettings() {
             'monospace': 'Monospace',
             'Kereru': 'Kereru',
             'serif': 'Serif',
-            'sans-serif': 'Sans-serif'
+            'sans-serif': 'Sans-serif',
+			'beech': 'Beech',
+			'newspaper': 'Newspaper',
+			'barcode': 'Barcode'
         },
         default: 'MOSCOW2024',
         onChange: value => {
