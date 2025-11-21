@@ -2,7 +2,7 @@
     "id": "lancer-communicator",
     "name": "lancer-communicator",
     "title": "Lancer Communicator",
-    "description": "NPC Communicator for Lancer RPG | Коммуникатор NPC для Lancer RPG",
+    "description": "NPC Communicator for Lancer RPG with Alternate Font Files installed",
     "version": "0.6.5.1",
 	"languages": [
         {
@@ -24,13 +24,13 @@
 	},
     "authors": [
         {
-            "name": "KamiliaBlow"
+            "name": "KamiliaBlow, minor edits from bnoble1001"
         }
     ],
     "esmodules": ["modules/main.js"],
     "socket": true,
-    "styles": ["styles/lancer-communicator.css"],
-    "url": "https://github.com/KamiliaBlow/Lancer-communication-module",
-    "manifest": "https://raw.githubusercontent.com/KamiliaBlow/Lancer-communication-module/main/lancer-communicator/module.json",
-    "download": "https://github.com/KamiliaBlow/Lancer-communication-module/archive/refs/tags/v0.6.5.1.zip"
+    "styles": ["styles/lancer-communicator-alt.css"],
+    "url": "https://github.com/bnoble1001/Lancer-communication-module-altfonts/",
+    "manifest": "https://raw.githubusercontent.com/bnoble1001/Lancer-communication-module-altfonts/main/lancer-communicator/module.json",
+    "download": "https://github.com/bnoble1001/Lancer-communication-module-altfonts/archive/refs/tags/v0.6.5.1.zip"
 }
