@@ -90,6 +90,9 @@ export class LancerCommunicator {
 							<option value="Kereru" ${this.settings.fontFamily === 'Kereru' ? 'selected' : ''}>Kereru</option>
 							<option value="Serif" ${this.settings.fontFamily === 'Serif' ? 'selected' : ''}>Serif</option>
 							<option value="Sans-serif" ${this.settings.fontFamily === 'Sans-serif' ? 'selected' : ''}>Sans-serif</option>
+							<option value="Beech" ${this.settings.fontFamily === 'Beech' ? 'selected' : ''}>Beech</option>
+							<option value="Newspaper" ${this.settings.fontFamily === 'Newspaper' ? 'selected' : ''}>Newspaper</option>
+							<option value="Barcode" ${this.settings.fontFamily === 'Barcode' ? 'selected' : ''}>Barcode</option>
                         </select>
                     </div>
                     <div class="lcm-form-group">
