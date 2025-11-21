@@ -18,6 +18,21 @@
     src: url('fonts/Kereru.otf') format('opentype');
 }
 
+@font-face {
+    font-family: 'Beech';
+    src: url('fonts/BEECH.TTF') format('opentype');
+}
+
+@font-face {
+    font-family: 'Newspaper';
+    src: url('fonts/newspaper.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Barcode';
+    src: url('fonts/LibreBarcode128Text-Regular.ttf') format('opentype');
+}
+
 :root {
     --message-font-size: 14px;
     --message-font: 'MOSCOW2024';
