@@ -31,6 +31,6 @@
     "socket": true,
     "styles": ["styles/alt-lancer-communicator.css"],
     "url": "https://github.com/bnoble1001/Lancer-communication-module-altfonts/",
-    "manifest": "https://raw.githubusercontent.com/bnoble1001/Lancer-communication-module-altfonts/main/lancer-communicator/module.json",
-    "download": "https://github.com/bnoble1001/Lancer-communication-module-altfonts/archive/refs/tags/0.1.2.zip"
+    "manifest": "https://raw.githubusercontent.com/bnoble1001/Lancer-communication-module-altfonts/main/alt-lancer-communicator/module.json",
+    "download": "https://github.com/bnoble1001/Lancer-communication-module-altfonts/archive/refs/tags/0.0.1.zip"
 }
